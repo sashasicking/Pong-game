@@ -1,0 +1,27 @@
+h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+canvas {
+  border: 1px solid grey;
+}
+body {
+  text-align: center;
+}
+
+img {
+  display: none;
+}
+button{
+  height: 60px;
+  width: 80px;
+  background-color: blue;
+}
+#output{
+font-size: 25px;
+color:blue;
+}
+#output2{
+  font-size: 25px;
+  color:green;
+  }
