@@ -10,16 +10,16 @@ cnv.height = 600;
 let player = {
   x: 800,
   y: 225,
-  w: 50,
-  h: 50,
+  w: 75,
+  h: 75,
   speed: 10,
 };
 
 let player2 = {
   x2: 0,
   y2: 225,
-  w: 50,
-  h: 50,
+  w: 75,
+  h: 75,
   speed: 10,
 };
 
@@ -134,20 +134,27 @@ if (player3.x3 >= 815) {
 }
 
 // Paddle collision
+// Paddle collision
 if (
- 
-  player2.x2 <= player3.x3 + player3.w && player2.x2 >= player3.x3 - player3.w && player2.y2 <= player3.y3 + player3.h && player2.y2 >= player3.y3 - player2.h ||  player.x <= player3.x3 + player3.w && player.x >= player3.x3 - player3.w && player.y <= player3.y3 + player3.h && player.y >= player3.y3 - player.h 
+  player1.x + player1.w >= player3.x3 && 
+  player1.x <= player3.x3 &&
+  player1.y <= player3.y3 + player3.h && 
+  player1.y + player1.h >= player3.y3
 ) {
-  // Flip the direction and apply some randomness on Y 
+  // Ball hits player1's paddle
   player3.speedX = -player3.speedX;
   player3.speedY += Math.random() * 3 - 1;
 } else if (
-  player2.x2 <= player3.x3 + player3.w && player2.x2 >= player3.x3 - player3.w && player2.y2 <= player3.y3 + player3.h && player2.y2 >= player3.y3 - player2.h ||  player.x <= player3.x3 + player3.w && player.x >= player3.x3 - player3.w && player.y <= player3.y3 + player3.h && player.y >= player3.y3 - player.h 
+  player2.x2 <= player3.x3 + player3.w && 
+  player2.x2 + player2.w >= player3.x3 &&
+  player2.y2 <= player3.y3 + player3.h && 
+  player2.y2 + player2. >= player3.y3
 ) {
-  // Flip the direction and apply some randomness on Y 
+  // Ball hits player2's paddle
   player3.speedX = -player3.speedX;
   player3.speedY += Math.random() * 3 - 1;
 }
+
 
 // Wall collision
 if (player3.y3 >= 575 || player3.y3 <= 0) {
