@@ -3,33 +3,33 @@
 //Set up Canvas and Graphics Context
 let cnv = document.getElementById("myCanvas");
 let ctx = cnv.getContext("2d");
-cnv.width = 800;
-cnv.height = 600;
+cnv.width = 400;
+cnv.height = 300;
 
 // Global Variables
 let player = {
-  x: 800,
-  y: 300,
-  w: 75,
-  h: 75,
+  x: 370,
+  y: 150,
+  w: 30,
+  h: 30,
   speed: 10,
 };
 
 let player2 = {
   x2: 0,
-  y2: 300,
-  w: 75,
-  h: 75,
+  y2: 150,
+  w: 30,
+  h: 30,
   speed: 10,
 };
 
 let player3 ={
-  x3: 400,
-  y3: 300,
-  h: 0,
-  w: 30,
-  speedX:5,
-  speedY:5
+  x3: 200,
+  y3: 150,
+  h: 20,
+  w: 20,
+  speedX:3,
+  speedY:3
 };
 
 
@@ -78,22 +78,22 @@ function draw() {
 
   if (player.x < 0) {
     player.x = 0;
-  } else if (player.x > 750) {
-    player.x = 750;
+  } else if (player.x > 400) {
+    player.x = 400;
   } else if (player.y < 0) {
     player.y = 0;
-  } else if (player.y > 550) {
-    player.y = 550;
+  } else if (player.y > 250) {
+    player.y = 250;
   }
 
   if (player2.x2 < 0) {
     player2.x2 = 0;
-  } else if (player2.x2 > 750) {
-    player2.x2 = 750;
+  } else if (player2.x2 > 350) {
+    player2.x2 = 350;
   } else if (player2.y2 < 0) {
     player2.y2 = 0;
-  } else if (player2.y2 > 550) {
-    player2.y2 = 550;
+  } else if (player2.y2 > 250) {
+    player2.y2 = 250;
   }
 
   //Drawing
@@ -108,7 +108,7 @@ function draw() {
 
   ctx.fillStyle = "red"
   ctx.beginPath();
-  ctx.arc(player3.x3, player3.y3, player3.w, player3.h, 2 * Math.PI);
+  ctx.arc(player3.x3, player3.y3, player3.w, 0, 2 * Math.PI);
   ctx.stroke();
   
 
@@ -118,7 +118,7 @@ player3.x3 += player3.speedX;
 player3.y3 += player3.speedY;
 
 // Scoring
-if (player3.x3 >= 815) {
+if (player3.x3 >= 415) {
   count++;
   output.textContent++
   player3.x3 = 200;
@@ -133,33 +133,39 @@ if (player3.x3 >= 815) {
   player3.speedX = -player3.speedX;
 }
 
+
 // Paddle collision
 // Paddle collision
 if (
-  player1.x + player1.w >= player3.x3 && 
-  player1.x <= player3.x3 &&
-  player1.y <= player3.y3 + player3.h && 
-  player1.y + player1.h >= player3.y3
-) {
-  // Ball hits player1's paddle
-  player3.speedX = -player3.speedX;
-  player3.speedY += Math.random() * 3 - 1;
-} else if (
-  player2.x2 <= player3.x3 + player3.w && 
-  player2.x2 + player2.w >= player3.x3 &&
-  player2.y2 <= player3.y3 + player3.h && 
-  player2.y2 + player2. >= player3.y3
-) {
-  // Ball hits player2's paddle
-  player3.speedX = -player3.speedX;
-  player3.speedY += Math.random() * 3 - 1;
-}
+    player.x <= player3.x3 + player3.w && 
+    player.x + player.w >= player3.x3 - player3.w &&
+    player.y <= player3.y3 + player3.h && 
+    player.y + player.h >= player3.y3 - player3.h
+  ) {
+    // Ball hits player1's paddle
+    player3.speedX = -player3.speedX;
+    player3.x3 = player.x - player3.w;  // Move the ball to the left edge of the paddle
+    player3.speedY += Math.random() * 2 - 1;
+  } else if (
+    player2.x2 <= player3.x3 + player3.w && 
+    player2.x2 + player2.w >= player3.x3 - player3.w &&
+    player2.y2 <= player3.y3 + player3.h && 
+    player2.y2 + player2.h >= player3.y3 - player3.h
+  ) {
+    // Ball hits player2's paddle
+    player3.speedX = -player3.speedX;
+    player3.x3 = player2.x2 + player2.w + player3.w;  // Move the ball to the right edge of the paddle
+    player3.speedY += Math.random() * 2 - 1;
+  }
+  
+  
+  
 
 
 // Wall collision
-if (player3.y3 >= 575 || player3.y3 <= 0) {
+if (player3.y3 >= 275 || player3.y3 <= 0) {
   player3.speedY = -player3.speedY;
-  // player3.speedX += Math.random() * 5 - 1; 
+  player3.speedX += Math.random() * 3 - 1; 
 }
 
   
@@ -188,7 +194,8 @@ function keydownHandler(event) {
       arrowDownPressed = true;
       
     }
-  }
+}
+  
 
   if (!event.repeat) {
     // if (event.code == "KeyD") {
@@ -202,8 +209,8 @@ function keydownHandler(event) {
     }
   }
 
-
 }
+
 
 function keyupHandler(event) {
   // KeyIsPressed Movement
