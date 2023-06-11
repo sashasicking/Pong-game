@@ -8,8 +8,8 @@ cnv.height = 300;
 
 // Global Variables
 let player = {
-  x: 800,
-  y: 225,
+  x: 400,
+  y: 150,
   w: 75,
   h: 75,
   speed: 10,
@@ -17,15 +17,15 @@ let player = {
 
 let player2 = {
   x2: 0,
-  y2: 225,
+  y2: 150,
   w: 75,
   h: 75,
   speed: 10,
 };
 
 let player3 ={
-  x3: 400,
-  y3: 225,
+  x3: 200,
+  y3: 150,
   h: 0,
   w: 30,
   speedX:5,
