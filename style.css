@@ -1,30 +1,31 @@
 h1 {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-canvas {
-  border: 1px solid grey;
-}
-body {
-  text-align: center;
-}
-
-img {
-  display: none;
-}
-button{
-  height: 60px;
-  width: 80px;
-  background-color: blue;
-}
-#output{
-font-size: 25px;
-color:blue;
-}
-#output2{
-  font-size: 25px;
-  color:green;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
-p{
-  font-size:40px
-}
+  
+  canvas {
+    border: 1px solid grey;
+  }
+  body {
+    text-align: center;
+  }
+  
+  img {
+    display: none;
+  }
+  button{
+    height: 60px;
+    width: 80px;
+    background-color: blue;
+  }
+  #output{
+  font-size: 25px;
+  color: green;
+  }
+  #output2{
+    font-size: 25px;
+    color:blue;
+    }
+  p{
+    font-size:40px
+  }
+
