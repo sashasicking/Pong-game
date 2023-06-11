@@ -3,8 +3,8 @@
 //Set up Canvas and Graphics Context
 let cnv = document.getElementById("myCanvas");
 let ctx = cnv.getContext("2d");
-cnv.width = 800;
-cnv.height = 600;
+cnv.width = 400;
+cnv.height = 300;
 
 // Global Variables
 let player = {
